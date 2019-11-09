@@ -16,6 +16,8 @@ class AddExtraFieldsToUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('image');
             $table->string('phonenumber');
+            $table->string('role');
+
         });
     }
 
