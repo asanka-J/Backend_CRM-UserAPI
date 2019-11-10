@@ -21,7 +21,7 @@ class User extends Authenticatable implements JWTSubject
         return [
             'customer_id' => $this->id,
             'name' => $this->name,
-            'created_by' => $this->email,
+            'email address' => $this->email,
             'image' => $this->image,
             'role' => $this->role,
             'last_updated' => $this->updated_at->diffForHumans()
