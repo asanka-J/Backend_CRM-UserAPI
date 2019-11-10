@@ -17,11 +17,3 @@ Route::get('/', function () {
 
 
 
-////
-//Route::get('/users', 'UserController@index');
-//Route::get('/users/create', 'UserController@create');
-//Route::get('/users/{id}', 'UserController@show');
-//Route::get('/users/name/{name}', 'UserController@showByName');
-//Route::get('/users/update/{id}/', 'UserController@update');
-//Route::get('/users/delete/{id}', 'UserController@destroy');
-

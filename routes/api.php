@@ -18,7 +18,7 @@ Route::group([
 
 
 
-
+//User Api without auth
 Route::group([
     'prefix'     => 'users',
 ], function ($router) {
