@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 //
 Route::get('/users', 'UserController@index');
-Route::get('/users/{user}', 'UserController@show');
+Route::get('/users/{id}', 'UserController@show');
 Route::get('/users/name/{name}', 'UserController@showByName');
-Route::get('/users/{id}/update', 'UserController@update');
-Route::get('/users/{id}/delete', 'UserController@destroy');
+Route::get('/users/update/{id}/', 'UserController@update');
+Route::get('/users/delete/{id}', 'UserController@destroy');
