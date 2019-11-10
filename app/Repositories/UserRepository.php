@@ -17,10 +17,6 @@ class UserRepository implements UserRepositoryInterface
     {
         $user = new User;
 
-        $user->name = "asanka";
-        $user->role= "asanka";
-
-
         $user->save();
         return  response($user, Response::HTTP_ACCEPTED);
     }
@@ -33,7 +29,7 @@ class UserRepository implements UserRepositoryInterface
 
     public function all()
     {
-        $users = User::all();
+        $users = User::all()->map->format();
         return response()->json($users);
     }
 
@@ -44,16 +40,16 @@ class UserRepository implements UserRepositoryInterface
     public function findById($UserId)
     {
 
-        return User::where('id', $UserId)->firstOrFail();
-
+        $users =  User::where('id', $UserId)->firstOrFail()->format();
+        return response()->json($users);
 
     }
 
     public function findByName($userName)
     {
 
-        return User::where('name', $userName)->firstOrFail();
-
+        $users =  User::where('name', $userName)->firstOrFail()->format();
+        return response()->json($users);
     }
 
     /**

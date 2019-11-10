@@ -29,19 +29,31 @@ class UserController
     public function index()
     {
         $users= $this->userRepository->all();
-        dd($users);
+
         return $users;
     }
 
     /**
-     * @param User $user
+     * @param User $userID
      * @return mixed
      */
     public function show($userID)
     {
 
         $user = $this->userRepository->findById($userID);
-//        return $user;
+        return $user;
+    }
+
+
+    /**
+     * @param User $username
+     * @return mixed
+     */
+    public function showByName($username)
+    {
+
+        $user = $this->userRepository->findByName($username) ;
+        return $user;
     }
 
     /**
@@ -64,7 +76,7 @@ class UserController
      */
     public function destroy($userID)
     {
-        $this->customerRepository->destroy($userID);
+        $this->userRepository->destroy($userID);
 
         return redirect('/users');
     }

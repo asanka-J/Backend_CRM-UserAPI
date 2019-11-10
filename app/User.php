@@ -15,6 +15,19 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array
      */
+
+    public function format()
+    {
+        return [
+            'customer_id' => $this->id,
+            'name' => $this->name,
+            'created_by' => $this->email,
+            'image' => $this->image,
+            'role' => $this->role,
+            'last_updated' => $this->updated_at->diffForHumans()
+        ];
+    }
+
     protected $fillable = [
         'name', 'email', 'password','role','image'
     ];
