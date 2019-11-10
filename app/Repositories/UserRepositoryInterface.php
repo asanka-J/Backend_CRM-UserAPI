@@ -4,6 +4,9 @@ namespace App\Repositories;
 
 
 use App\User;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 /**
  * Class UserRepository
@@ -12,25 +15,38 @@ use App\User;
 interface UserRepositoryInterface
 {
     /**
-     * @return User[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Support\Collection
+     * @param Request $request
+     * @return ResponseFactory|JsonResponse|\Illuminate\Http\Response
+     */
+    public function create(Request $request);
+
+    /**
+     * @return User[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|JsonResponse|\Illuminate\Support\Collection
      */
     public function all();
 
     /**
      * @param $UserId
-     * @return mixed
+     * @return JsonResponse|mixed
      */
     public function findById($UserId);
 
+    /**
+     * @param $userName
+     * @return JsonResponse
+     */
     public function findByName($userName);
 
     /**
      * @param $UserId
+     * @param Request $request
+     * @return ResponseFactory|\Illuminate\Http\Response
      */
-    public function update($UserId);
+    public function update($UserId, Request $request);
 
     /**
      * @param $userId
+     * @return ResponseFactory|\Illuminate\Http\Response
      */
     public function destroy($userId);
 }

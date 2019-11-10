@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\Repositories\UserRepository;
 use App\Repositories\UserRepositoryInterface;
 use App\User;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController
 {
@@ -28,9 +30,20 @@ class UserController
      */
     public function index()
     {
-        $users= $this->userRepository->all();
+        $response= $this->userRepository->all();
+        return $response;
+    }
 
-        return $users;
+
+    /**
+     * @param Request $request
+     * @return User[]|Create
+     */
+    public function create(Request $request)
+    {
+
+        $response= $this->userRepository->create($request);
+        return $response;
     }
 
     /**
@@ -40,8 +53,8 @@ class UserController
     public function show($userID)
     {
 
-        $user = $this->userRepository->findById($userID);
-        return $user;
+        $response = $this->userRepository->findById($userID);
+        return $response;
     }
 
 
@@ -51,23 +64,20 @@ class UserController
      */
     public function showByName($username)
     {
-
-        $user = $this->userRepository->findByName($username) ;
-        return $user;
+        $response=$this->userRepository->findByName($username) ;
+        return $response;
     }
 
     /**
      * @param $userID
-     * @return RedirectResponse|Redirector
-     * @throws AuthorizationException
+     * @param Request $request
+     * @return void
      */
-    public function update($userID)
+    public function update($userID,Request $request)
     {
 
-
-        $customer = $this->userRepository->update($userID);
-
-        return redirect('/users/' . $userID);
+        $response = $this->userRepository->update($userID,$request);
+        return $response;
     }
 
     /**
@@ -76,8 +86,7 @@ class UserController
      */
     public function destroy($userID)
     {
-        $this->userRepository->destroy($userID);
-
-        return redirect('/users');
+        $response=$this->userRepository->destroy($userID);
+        return $response;
     }
 }
