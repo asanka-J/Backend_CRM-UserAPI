@@ -19,9 +19,9 @@ class User extends Authenticatable implements JWTSubject
     public function format()
     {
         return [
-            'customer_id' => $this->id,
+            'id' => $this->id,
             'name' => $this->name,
-            'email address' => $this->email,
+            'email_address' => $this->email,
             'image' => $this->image,
             'role' => $this->role,
             'last_updated' => $this->updated_at->diffForHumans()
